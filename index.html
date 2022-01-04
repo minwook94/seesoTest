@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.seeso.io/seeso.js"></script>
+    <script src="./seeso-minjs/seeso.min.js"></script>
 
     <script>
-        function callCalibrationPage() {
-        // static function. 
-        // Because the web page is moved. (https://calibration.seeso.io/#/service)
-        EasySeeSo.openCalibrationPage('dev_2agal6m0yzqy4thbsalr3jhx4j74lnnn0m03s31c', 'minwook_94@naver.com', 'https://minwook94.github.io/seesoTest/', 5); // 5 is number of calibration points
+        function onGaze (gazeInfo) {
+        if (gazeInfo.trackingState === TrackingState.SUCCESS){
+            let canvas = document.getElementById("output")
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+            let ctx = canvas.getContext("2d");
+            ctx.fillStyle = '#FF0000'
+            ctx.clearRect(0, 0, canvas.width, canvas.height )
+            ctx.beginPath();
+            ctx.arc(gazeInfo.x, gazeInfo.y, 10, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
     }
     </script>
+
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="output"></div>
 </body>
 </html>
