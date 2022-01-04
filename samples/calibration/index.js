@@ -6,7 +6,7 @@ const licenseKey = 'dev_2agal6m0yzqy4thbsalr3jhx4j74lnnn0m03s31c';
 
 function onClickCalibrationBtn(){
     const userId = 'minwook_94'; // ex) 5e9easf293
-    const redirectUrl = 'http://localhost:8082';
+    const redirectUrl = 'https://minwook94.github.io/seesoTest/';
     const calibrationPoint = 1;
     EasySeeSo.openCalibrationPage(licenseKey, userId, redirectUrl, calibrationPoint);
 }
